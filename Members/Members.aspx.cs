@@ -16,17 +16,19 @@ namespace Assignment4GroupProject.Members
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            //FIX need to show sectrion name, instructors first and last names, payment date, and amount of all payments made by the current member
             dbcon = new KarateDataContext(conn);
 
-            string mymEMBER = "user1";
+            string myMem = "user1";
 
-            int ridForMember = (from x in dbcon.NetUsers
-                                where x.UserName == mymEMBER
-                                select x).First().UserID;
+            int memberData = (from x in dbcon.NetUsers
+                                where x.UserName == myMem
+                              select x).First().UserID;
 
             var result = from item in dbcon.Members
-                         where item.Member_UserID == ridForMember
+                         where item.Member_UserID == memberData
                          select item;
+
             GridView1.DataSource = result;
             GridView1.DataBind();
 
