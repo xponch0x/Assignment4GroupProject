@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Admins\Admins.aspx" />
     <Content Include="App_Data\KarateSchool.mdf" />
     <Content Include="App_Data\KarateSchool_log.ldf">
       <DependentUpon>KarateSchool.mdf</DependentUpon>
@@ -131,6 +132,7 @@
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="Instructors\Instructors.aspx" />
+    <Content Include="Logon\Logon.aspx" />
     <Content Include="Members\Members.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -202,6 +204,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admins\Admins.aspx.cs">
+      <DependentUpon>Admins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\Admins.aspx.designer.cs">
+      <DependentUpon>Admins.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -247,6 +256,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Karate.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Logon\Logon.aspx.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logon\Logon.aspx.designer.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Members\Members.aspx.cs">
       <DependentUpon>Members.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -278,8 +294,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admins\" />
-    <Folder Include="Logon\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
