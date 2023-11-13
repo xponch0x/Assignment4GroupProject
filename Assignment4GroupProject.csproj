@@ -130,9 +130,11 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Home.aspx" />
+    <Content Include="Home.html" />
     <Content Include="Instructors\Instructors.aspx" />
     <Content Include="Logon\Logon.aspx" />
+    <Content Include="Main.css" />
+    <Content Include="Main.js" />
     <Content Include="Members\Members.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -236,13 +238,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Instructors\Instructors.aspx.cs">
       <DependentUpon>Instructors.aspx</DependentUpon>

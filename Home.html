@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="Main.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="Home.html">Assignment 4</a>
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="Home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.ndsu.edu/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Logon.aspx">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header class="page-header header container-fluid">
+        <script type="text/javascript" src="main.js"></script>
+        <div class="overlay"></div>
+        <div class="description">
+            <h1>Welcome to our Assignment 4 Page!</h1>
+            <a href="Logon.aspx" class="btn btn-success">Login</a>
+        </div>
+
+    </header>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <h1 class="text-uppercase font-weight-bold">Contact</h1>
+                    <h6 class="text-uppercase font-weight-bold">North Dakota State University</h6>
+                    <p>
+                        1340 Administration Ave, Fargo, ND 58105
+                        <br />griffin.winstead@ndsu.edu
+                        <br />eli.hofmann@ndsu.edu
+                    </p>
+                </div>
+
+                <div class="footer-copyright text-center">© 2023 Copyright: Csci213Assignment4.com</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
