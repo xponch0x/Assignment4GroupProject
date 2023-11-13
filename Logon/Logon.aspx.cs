@@ -44,8 +44,8 @@ namespace Assignment4GroupProject.Logon
                                 pswd.UserPassword
                             };
 
-                string username1 = names.First().ToString();
-                string password1 = pswds.First().ToString();
+                string username1 = names.First().UserName;
+                string password1 = pswds.First().UserPassword;
 
                 var userType = from x in dbcon.NetUsers
                          where x.UserName == userName
@@ -54,18 +54,18 @@ namespace Assignment4GroupProject.Logon
                              x.UserType
                          };
 
-                string uType = userType.First().ToString();
+                string uType = userType.First().UserType;
 
 
-                if (userName == username1 && password == password1)
+                if (userName.Equals(username1) && password.Equals(password1))
                 {
                     if(uType == "Member")
                     {
-                        Login1.DestinationPageUrl = "Members.aspx";
+                        Login1.DestinationPageUrl = "~/Members/Members.aspx";
                     }
                     if (uType == "Instructor")
                     {
-                        Login1.DestinationPageUrl = "Instructors.aspx";
+                        Login1.DestinationPageUrl = "~/Instructors/Instructors.aspx";
                     }
 
 
