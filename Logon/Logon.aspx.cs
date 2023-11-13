@@ -61,11 +61,11 @@ namespace Assignment4GroupProject.Logon
                 {
                     if(uType == "Member")
                     {
-                        Login1.DestinationPageUrl = "~/Members/Members.aspx";
+                        Response.Redirect("~/Members/Members.aspx");
                     }
                     if (uType == "Instructor")
                     {
-                        Login1.DestinationPageUrl = "~/Instructors/Instructors.aspx";
+                        Response.Redirect("~/Instructors/Instructors.aspx");
                     }
 
 
