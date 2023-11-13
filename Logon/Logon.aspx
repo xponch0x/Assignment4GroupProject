@@ -9,6 +9,4 @@
 <br />
 <br />
 <br />
-<asp:TextBox ID="TextBox1" runat="server" Width="190px"></asp:TextBox>
-<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </asp:Content>

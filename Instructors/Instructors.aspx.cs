@@ -22,29 +22,34 @@ namespace Assignment4GroupProject.Instructors
             dbcon = new KarateDataContext(conn);
 
             string myInstruct = LoginName1.ToString();
+            try
+            {
+                NetUser instructUserID = (from x in dbcon.NetUsers
+                                          where x.UserName == myInstruct
+                                          select x).First();
 
-            NetUser instructUserID = (from x in dbcon.NetUsers
-                                      where x.UserName == myInstruct
-                                      select x).First();
-
-            int id = instructUserID.UserID;
+                int id = instructUserID.UserID;
 
 
 
-            var result = from karMember in dbcon.Members
-                         from sectionInfo in dbcon.Sections
-                         from instructor in dbcon.Instructors
-                         where instructor.InstructorID == id && karMember.Member_UserID == sectionInfo.Member_ID && sectionInfo.Instructor_ID == instructor.InstructorID
-                         select new
-                         {
-                             sectionInfo.SectionName,
-                             karMember.MemberLastName,
-                             karMember.MemberFirstName,
-                         };
+                var result = from karMember in dbcon.Members
+                             from sectionInfo in dbcon.Sections
+                             from instructor in dbcon.Instructors
+                             where instructor.InstructorID == id && karMember.Member_UserID == sectionInfo.Member_ID && sectionInfo.Instructor_ID == instructor.InstructorID
+                             select new
+                             {
+                                 sectionInfo.SectionName,
+                                 karMember.MemberLastName,
+                                 karMember.MemberFirstName,
+                             };
 
-            GridView1.DataSource = result;
-            GridView1.DataBind();
+                GridView1.DataSource = result;
+                GridView1.DataBind();
+            }
+            catch (Exception ex)
+            {
 
+            }
         }
 
         
