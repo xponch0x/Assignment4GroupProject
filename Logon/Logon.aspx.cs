@@ -78,11 +78,6 @@ namespace Assignment4GroupProject.Logon
                     TextBox1.Text = "ahsdahsdas";
                     Label1.Text = "apsofihadf";
                 }
-
-
-
-
-
             }
             catch (Exception ex)
             {

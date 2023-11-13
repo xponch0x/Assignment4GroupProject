@@ -10,7 +10,7 @@ namespace Assignment4GroupProject.Admins
 {
     public partial class Admins : System.Web.UI.Page
     {
-        string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ehofm\\Desktop\\Assignment4GroupProject\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+        string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\grifw\\source\\repos\\Assignment4GroupProject\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
         KarateDataContext dbcon;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -39,6 +39,7 @@ namespace Assignment4GroupProject.Admins
 
             adminGridViewMember.DataSource = resultMember;
             adminGridViewMember.DataBind();
+            Refresh();
         }
 
         public void Refresh() 
@@ -73,26 +74,33 @@ namespace Assignment4GroupProject.Admins
         {
             var db = new KarateDataContext(conn);
 
-            
-            
 
-            var netuser = new NetUser();
-            netuser.UserName = txtMemberUserName.Text;
-            netuser.UserPassword = txtMemberPassword.Text;
-            netuser.UserType = "Member";
 
-            var member = new Member();
-            member.MemberFirstName = txtMemberFirstName.Text;
-            member.MemberPhoneNumber = txtMemberPhoneNumber.Text;
-            member.MemberLastName = txtMemberLastName.Text;
-            member.MemberEmail = txtMemberEmail.Text;
-            member.Member_UserID = netuser.UserID;
-            member.MemberDateJoined = DateTime.Now;
 
-            db.Members.InsertOnSubmit(member);
+            NetUser netuser = new NetUser 
+            {
+                UserName = txtMemberUserName.Text,
+                UserPassword = txtMemberPassword.Text,
+                UserType = "Member"
+            };
             db.NetUsers.InsertOnSubmit(netuser);
             db.SubmitChanges();
+
+            Member member = new Member 
+            {
+                MemberFirstName = txtMemberFirstName.Text,
+                MemberPhoneNumber = txtMemberPhoneNumber.Text,
+                MemberLastName = txtMemberLastName.Text,
+                MemberEmail = txtMemberEmail.Text,
+                Member_UserID = netuser.UserID,
+                MemberDateJoined = DateTime.Now
+            };
+
+            
+            db.Members.InsertOnSubmit(member);
+            db.SubmitChanges();
             Refresh();
+
             txtMemberEmail.Text = string.Empty;
             txtMemberFirstName.Text = string.Empty;
             txtMemberLastName.Text = string.Empty;
@@ -115,6 +123,9 @@ namespace Assignment4GroupProject.Admins
             netuser.UserPassword = txtInstructorPassword.Text;
             netuser.UserType = "Instructor";
 
+            db.NetUsers.InsertOnSubmit(netuser);
+            db.SubmitChanges();
+
             var instructor = new Instructor();
             instructor.InstructorFirstName = txtInstructorFirstName.Text;
             instructor.InstructorPhoneNumber = txtInstructorPhone.Text;
@@ -122,8 +133,9 @@ namespace Assignment4GroupProject.Admins
             instructor.InstructorID = netuser.UserID;
 
             db.Instructors.InsertOnSubmit(instructor);
-            db.NetUsers.InsertOnSubmit(netuser);
             db.SubmitChanges();
+
+
             Refresh();
             txtInstructorFirstName.Text = string.Empty;
             txtInstructorLastName.Text = string.Empty;
@@ -157,29 +169,26 @@ namespace Assignment4GroupProject.Admins
 
             
 
-            NetUser memberUserID = (from x in dbcon.NetUsers
-                                    where x.UserID == Convert.ToInt32(txtDeleteMemberId.Text)
+            var memberUserID = (from x in dbcon.Members
+                                    where x.Member_UserID == Convert.ToInt32(txtDeleteMemberId.Text)
                                     select x).First();
 
-            int id = memberUserID.UserID;
-
-
-
-            Member member = dbcon.Members.FirstOrDefault(item => item.Member_UserID == id);
-            NetUser netuser = dbcon.NetUsers.FirstOrDefault(item => item.UserID == id);
-
-            if (member != null) 
-            { 
-                db.Members.DeleteOnSubmit(member);
-                db.SubmitChanges();
-            }
-
-            if (netuser != null) 
+            if (memberUserID != null)
             {
-                db.NetUsers.DeleteOnSubmit(netuser);
-                db.SubmitChanges();
+                dbcon.Members.DeleteOnSubmit(memberUserID);
+                dbcon.SubmitChanges();
             }
 
+            var netUserID = (from x in dbcon.NetUsers
+                                where x.UserID == Convert.ToInt32(txtDeleteMemberId.Text)
+                                select x).First();
+
+            if (netUserID != null)
+            {
+                dbcon.NetUsers.DeleteOnSubmit(netUserID);
+                dbcon.SubmitChanges();
+            }
+           
             Refresh();
             txtDeleteMemberId.Text = string.Empty;
 
@@ -192,27 +201,24 @@ namespace Assignment4GroupProject.Admins
 
 
 
-            NetUser instructorUserID = (from x in dbcon.NetUsers
-                                    where x.UserID == Convert.ToInt32(txtDeleteInstructorId.Text)
+            var instructorUserID = (from x in dbcon.Instructors
+                                    where x.InstructorID == Convert.ToInt32(txtDeleteInstructorId.Text)
                                     select x).First();
 
-            int id = instructorUserID.UserID;
-
-
-
-            Instructor instructor = dbcon.Instructors.FirstOrDefault(item => item.InstructorID == id);
-            NetUser netuser = dbcon.NetUsers.FirstOrDefault(item => item.UserID == id);
-
-            if (instructor != null)
+            if (instructorUserID != null)
             {
-                db.Instructors.DeleteOnSubmit(instructor);
-                db.SubmitChanges();
+                dbcon.Instructors.DeleteOnSubmit(instructorUserID);
+                dbcon.SubmitChanges();
             }
 
-            if (netuser != null)
+            var netUserID = (from x in dbcon.NetUsers
+                            where x.UserID == Convert.ToInt32(txtDeleteInstructorId.Text)
+                            select x).First();
+
+            if(netUserID != null)
             {
-                db.NetUsers.DeleteOnSubmit(netuser);
-                db.SubmitChanges();
+                dbcon.NetUsers.DeleteOnSubmit(netUserID);
+                dbcon.SubmitChanges();
             }
 
             Refresh();
