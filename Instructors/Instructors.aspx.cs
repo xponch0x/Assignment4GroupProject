@@ -15,32 +15,30 @@ namespace Assignment4GroupProject.Instructors
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //FIX need to show section name and all the member first and last name
+            
 
             dbcon = new KarateDataContext(conn);
 
-            string myInstruct = "allyjohnson";
+            string myInstruct = "alejandrosnow";
 
-            int userId = (from x in dbcon.NetUsers
-                          where x.UserName == myInstruct
-                          select x).First().UserID;
+            NetUser instructUserID = (from x in dbcon.NetUsers
+                                      where x.UserName == myInstruct
+                                      select x).First();
 
-            int instructId = userId;
+            int id = instructUserID.UserID;
 
-            int sectionId = (from x in dbcon.Sections
-                             where x.Instructor_ID == instructId
-                             select x).First().SectionID;
 
-            int memberId = (from x in dbcon.Sections
-                                where x.SectionID == sectionId
-                                select x).First().Member_ID;
 
-            var result = from user in dbcon.NetUsers
-                         from member in dbcon.Members
+            var result = from karMember in dbcon.Members
+                         from sectionInfo in dbcon.Sections
                          from instructor in dbcon.Instructors
-                         from section in dbcon.Sections
-                         where section.Instructor_ID == instructId && section.SectionID == sectionId && member.Member_UserID == memberId
-                         select new { section.SectionName, member.MemberLastName, member.MemberFirstName };
+                         where instructor.InstructorID == id && karMember.Member_UserID == sectionInfo.Member_ID && sectionInfo.Instructor_ID == instructor.InstructorID
+                         select new
+                         {
+                             sectionInfo.SectionName,
+                             karMember.MemberLastName,
+                             karMember.MemberFirstName,
+                         };
 
             GridView1.DataSource = result;
             GridView1.DataBind();
