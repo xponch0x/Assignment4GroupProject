@@ -22,9 +22,9 @@ namespace Assignment4GroupProject.Members
 
             string myMember = "mollyl";
 
-            
 
-            NetUser memberUserID = (from x in dbcon.NetUsers 
+
+            NetUser memberUserID = (from x in dbcon.NetUsers
                                     where x.UserName == myMember
                                     select x).First();
 

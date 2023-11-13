@@ -1,6 +1,8 @@
 ﻿using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -44,5 +46,7 @@ namespace Assignment4GroupProject.Instructors
             GridView1.DataBind();
 
         }
+
+        
     }
 }
