@@ -73,41 +73,63 @@ namespace Assignment4GroupProject.Admins
         {
             var db = new KarateDataContext(conn);
 
+            
+            
+
+            var netuser = new NetUser();
+            netuser.UserName = txtMemberUserName.Text;
+            netuser.UserPassword = txtMemberPassword.Text;
+            netuser.UserType = "Member";
+
             var member = new Member();
             member.MemberFirstName = txtMemberFirstName.Text;
             member.MemberPhoneNumber = txtMemberPhoneNumber.Text;
             member.MemberLastName = txtMemberLastName.Text;
             member.MemberEmail = txtMemberEmail.Text;
-
-            var netuser = new NetUser();
-            netuser.UserName = txtMemberUserName.Text;
-            netuser.UserPassword = txtMemberPassword.Text;
+            member.Member_UserID = netuser.UserID;
+            member.MemberDateJoined = DateTime.Now;
 
             db.Members.InsertOnSubmit(member);
             db.NetUsers.InsertOnSubmit(netuser);
             db.SubmitChanges();
             Refresh();
-
+            txtMemberEmail.Text = string.Empty;
+            txtMemberFirstName.Text = string.Empty;
+            txtMemberLastName.Text = string.Empty;
+            txtMemberPassword.Text = string.Empty;
+            txtMemberUserName.Text = string.Empty;
+            txtMemberPhoneNumber.Text = string.Empty;
+            
+          
         }
 
         protected void btnAddInstructor_Click(object sender, EventArgs e)
         {
             var db = new KarateDataContext(conn);
 
+            
+
+            var netuser = new NetUser();
+            
+            netuser.UserName = txtInstructorUserName.Text;
+            netuser.UserPassword = txtInstructorPassword.Text;
+            netuser.UserType = "Instructor";
+
             var instructor = new Instructor();
             instructor.InstructorFirstName = txtInstructorFirstName.Text;
             instructor.InstructorPhoneNumber = txtInstructorPhone.Text;
             instructor.InstructorLastName = txtInstructorLastName.Text;
-            
-
-            var netuser = new NetUser();
-            netuser.UserName = txtInstructorUserName.Text;
-            netuser.UserPassword = txtInstructorPassword.Text;
+            instructor.InstructorID = netuser.UserID;
 
             db.Instructors.InsertOnSubmit(instructor);
             db.NetUsers.InsertOnSubmit(netuser);
             db.SubmitChanges();
             Refresh();
+            txtInstructorFirstName.Text = string.Empty;
+            txtInstructorLastName.Text = string.Empty;
+            txtInstructorPassword.Text = string.Empty;
+            txtInstructorUserName.Text = string.Empty;
+            txtInstructorPhone.Text = string.Empty;
         }
 
         protected void btnAssignMemberToSection_Click(object sender, EventArgs e)
@@ -123,7 +145,9 @@ namespace Assignment4GroupProject.Admins
                 section.Member_ID = Convert.ToInt32(txtMemberId.Text);
                 db.SubmitChanges();
             }
-            Refresh();
+
+            txtMemberId.Text = string.Empty;
+            txtSectionId.Text = string.Empty;
         }
 
         protected void btnDeleteMember_Click(object sender, EventArgs e)
@@ -157,6 +181,8 @@ namespace Assignment4GroupProject.Admins
             }
 
             Refresh();
+            txtDeleteMemberId.Text = string.Empty;
+
         }
 
         protected void btnDeleteInstructor_Click(object sender, EventArgs e)
@@ -190,6 +216,7 @@ namespace Assignment4GroupProject.Admins
             }
 
             Refresh();
+            txtDeleteInstructorId.Text = string.Empty; 
         }
     }
 }

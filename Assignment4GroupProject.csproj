@@ -169,6 +169,7 @@
       <LastGenOutput>Karate.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Admins\Web.config" />
     <None Include="Karate.dbml.layout">
       <DependentUpon>Karate.dbml</DependentUpon>
     </None>

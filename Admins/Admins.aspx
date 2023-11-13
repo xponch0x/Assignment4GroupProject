@@ -105,13 +105,13 @@
                 </td>
                 <td style="width: 160px">UserPassword:</td>
                 <td>
-                    <asp:TextBox ID="txtInstructorPassword" runat="server" Width="197px"></asp:TextBox>
+                    <asp:TextBox ID="txtInstructorPassword" runat="server" Width="197px" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td style="width: 166px">UserPassword:</td>
                 <td style="width: 330px">
-                    <asp:TextBox ID="txtMemberPassword" runat="server" Width="197px"></asp:TextBox>
+                    <asp:TextBox ID="txtMemberPassword" runat="server" Width="197px" TextMode="Password"></asp:TextBox>
                 </td>
                 <td style="width: 160px">
                     <asp:Button ID="btnAddInstructor" runat="server" OnClick="btnAddInstructor_Click" Text="Add" />
