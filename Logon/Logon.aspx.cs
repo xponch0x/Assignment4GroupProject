@@ -69,7 +69,7 @@ namespace Assignment4GroupProject.Logon
                     }
                     if (uType == "Administrator") 
                     {
-                        Login1.DestinationPageUrl = "~/Admins/Admins.aspx";
+                        Response.Redirect("~/Admins/Admins.aspx");
                     }
 
 

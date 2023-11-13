@@ -5,7 +5,7 @@
     Hello!&nbsp;&nbsp;&nbsp;
     <asp:LoginName ID="LoginName1" runat="server" />
 &nbsp;&nbsp;&nbsp;
-    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutPageUrl="~/Home.html" />
 </p>
 <p>
 </p>

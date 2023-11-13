@@ -21,7 +21,7 @@ namespace Assignment4GroupProject.Instructors
 
             dbcon = new KarateDataContext(conn);
 
-            string myInstruct = "alejandrosnow";
+            string myInstruct = LoginName1.ToString();
 
             NetUser instructUserID = (from x in dbcon.NetUsers
                                       where x.UserName == myInstruct
