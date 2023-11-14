@@ -53,6 +53,8 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="Home.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="https://www.ndsu.edu/about">About</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="Logon.aspx">Log in</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Members/Members.aspx">Members</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Instructors/Instructors.aspx">Instructors</a></li>
                     </ul>
                 </div>
             </div>
