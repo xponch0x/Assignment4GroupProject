@@ -130,7 +130,7 @@
     <Content Include="Global.asax" />
     <Content Include="Home.html" />
     <Content Include="Instructors\Instructors.aspx" />
-    <Content Include="Logon\Logon.aspx" />
+    <Content Include="Logon.aspx" />
     <Content Include="Main.css" />
     <Content Include="Main.js" />
     <Content Include="Members\Members.aspx" />
@@ -250,11 +250,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Karate.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Logon\Logon.aspx.cs">
+    <Compile Include="Logon.aspx.cs">
       <DependentUpon>Logon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Logon\Logon.aspx.designer.cs">
+    <Compile Include="Logon.aspx.designer.cs">
       <DependentUpon>Logon.aspx</DependentUpon>
     </Compile>
     <Compile Include="Members\Members.aspx.cs">
