@@ -33,6 +33,15 @@ namespace Assignment4GroupProject.Instructors
         protected global::System.Web.UI.WebControls.LoginStatus LoginStatus1;
 
         /// <summary>
+        /// lblNameDisplay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNameDisplay;
+
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>

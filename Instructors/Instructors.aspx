@@ -9,6 +9,9 @@
 </p>
 <p>
 </p>
+    <p>
+        <asp:Label ID="lblNameDisplay" runat="server"></asp:Label>
+</p>
 <p>
     <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
         <AlternatingRowStyle BackColor="White" />

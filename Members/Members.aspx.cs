@@ -12,16 +12,18 @@ namespace Assignment4GroupProject.Members
     public partial class Members : System.Web.UI.Page
     {
 
-        string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\grifw\\source\\repos\\Assignment4GroupProject\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+        //connection string to the database
+        string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ehofm\\Desktop\\Assignment4GroupProject\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
         KarateDataContext dbcon;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if the session count is not equal to zero checks to see if the wrong usertype is in the session
             if (Session.Count != 0)
             {
                 if (HttpContext.Current.Session["userType"].ToString().Trim() == "Instructor" || HttpContext.Current.Session["userType"].ToString().Trim() == "Administrator")
                 {
+                    //deletes session and reverts back to logon page
                     Session.Clear();
                     Session.RemoveAll();
                     Session.Abandon();
@@ -34,19 +36,32 @@ namespace Assignment4GroupProject.Members
 
             dbcon = new KarateDataContext(conn);
 
+            //collects the members username
             string myMember = User.Identity.Name;
 
 
             try
             {
+
+                
+
+
+                //query to collect user id from database
                 NetUser memberUserID = (from x in dbcon.NetUsers
                                         where x.UserName == myMember
                                         select x).First();
 
+                //assigns user id to id
                 int id = memberUserID.UserID;
 
+                //query to display fisrt and last name of logged in user
+                Member memName = (from x in dbcon.Members
+                                  where x.Member_UserID == id
+                                  select x).First();
 
+                lblNameDisplay.Text = memName.MemberFirstName + " " + memName.MemberLastName;
 
+                //query to collect respective data from datatables to display to user
                 var result = from karMember in dbcon.Members
                              from sectionInfo in dbcon.Sections
                              from instructor in dbcon.Instructors
@@ -59,7 +74,7 @@ namespace Assignment4GroupProject.Members
                                  karMember.MemberDateJoined,
                                  sectionInfo.SectionFee
                              };
-
+                //displays data to user
                 GridView1.DataSource = result;
                 GridView1.DataBind();
             }
