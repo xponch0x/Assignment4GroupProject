@@ -11,7 +11,7 @@ namespace Assignment4GroupProject.Members
     public partial class Members : System.Web.UI.Page
     {
 
-        string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\grifw\\source\\repos\\Assignment4GroupProject\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+        string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ehofm\\Desktop\\Assignment4GroupProject\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
         KarateDataContext dbcon;
 
         protected void Page_Load(object sender, EventArgs e)
