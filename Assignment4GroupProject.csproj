@@ -168,9 +168,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Admins\Web.config" />
+    <Content Include="Instructors\Web.config" />
     <None Include="Karate.dbml.layout">
       <DependentUpon>Karate.dbml</DependentUpon>
     </None>
+    <Content Include="Members\Web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

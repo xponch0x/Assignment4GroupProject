@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace Assignment4GroupProject.Instructors
 {
@@ -17,11 +18,23 @@ namespace Assignment4GroupProject.Instructors
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
 
+            if (Session.Count != 0)
+            {
+                if (HttpContext.Current.Session["userType"].ToString().Trim() == "Member" || HttpContext.Current.Session["userType"].ToString().Trim() == "Administrator")
+                {
+                    Session.Clear();
+                    Session.RemoveAll();
+                    Session.Abandon();
+                    Session.Abandon();
+                    FormsAuthentication.SignOut();
+                    Response.Redirect("Logon.aspx", true);
+                }
+
+            }
             dbcon = new KarateDataContext(conn);
 
-            string myInstruct = LoginName1.ToString();
+            string myInstruct = User.Identity.Name;
             try
             {
                 NetUser instructUserID = (from x in dbcon.NetUsers
